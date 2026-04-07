@@ -1,0 +1,54 @@
+Employee_ID,Employee_Name,Medical_Plan,Plan_Type,Dental_Plan,Vision_Plan,FSA_Health,HSA,Life_Insurance_Coverage,Dependent_Coverage,Annual_Premium_Employee,Annual_Premium_Company,Enrollment_Date,Status
+EMP001,James Richardson,United Blue PPO,PPO,Delta Dental Premier,VSP Vision Plus,No,No,500000,Family,8500,54000,2015-06-01,Active
+EMP002,Sarah Mitchell,Aetna PPO,PPO,MetLife Dental,EyeMed Vision,Yes,No,400000,Family,7200,48000,2016-03-15,Active
+EMP003,Michael Thompson,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,No,Yes,500000,Family,6800,45000,2017-01-10,Active
+EMP004,Jennifer Chen,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,Yes,No,400000,Family,7500,49000,2018-05-20,Active
+EMP005,David Martinez,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,350000,Individual,5200,32000,2016-08-12,Active
+EMP006,Patricia Anderson,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,Yes,300000,Individual,6100,38500,2016-08-12,Active
+EMP007,Robert Johnson,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,400000,Family,7000,46000,2017-05-01,Active
+EMP008,Linda Davis,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,Yes,300000,Individual,5800,35000,2018-02-15,Active
+EMP009,Christopher Wilson,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,350000,Family,6500,41000,2017-11-01,Active
+EMP010,Maria Garcia,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,Yes,300000,Individual,5900,36000,2019-01-10,Active
+EMP011,Thomas Rodriguez,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,250000,Family,5100,31000,2018-03-20,Active
+EMP012,Jessica Lewis,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,Yes,250000,Individual,4800,29000,2018-07-15,Active
+EMP013,Daniel Lee,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,200000,Individual,4200,25000,2017-09-05,Active
+EMP014,Amanda Walker,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,No,150000,Individual,3500,21000,2020-02-10,Active
+EMP015,Kevin Hall,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2021-06-15,Active
+EMP016,Rachel Allen,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,Yes,150000,Individual,3800,22500,2019-04-20,Active
+EMP017,Timothy Young,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,150000,Individual,3400,20500,2019-08-01,Active
+EMP018,Emily King,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,No,150000,Family,3500,21000,2020-01-15,Active
+EMP019,Matthew Wright,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2020-06-20,Active
+EMP020,Sarah Lopez,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,Yes,150000,Individual,3400,20500,2021-03-10,Active
+EMP021,Andrew Hill,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2021-07-25,Active
+EMP022,Lisa Scott,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,No,150000,Individual,3600,21500,2022-01-15,Active
+EMP023,James Green,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,150000,Individual,3400,20500,2022-05-01,Active
+EMP024,Karen Adams,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,Yes,150000,Individual,3500,21000,2022-09-20,Active
+EMP025,William Nelson,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2020-04-15,Active
+EMP026,Nancy Carter,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,No,150000,Individual,3400,20500,2020-08-20,Active
+EMP027,Charles Mitchell,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2021-02-10,Active
+EMP028,Susan Perez,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,Yes,150000,Individual,3600,21500,2021-06-25,Active
+EMP029,Joseph Roberts,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,150000,Individual,3400,20500,2022-01-15,Active
+EMP030,Barbara Phillips,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,No,150000,Individual,3500,21000,2022-05-01,Active
+EMP031,Richard Campbell,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2019-10-01,Active
+EMP032,Michelle Parker,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,Yes,150000,Individual,3400,20500,2020-05-15,Active
+EMP033,Donald Evans,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2021-01-10,Active
+EMP034,Dorothy Edwards,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,No,150000,Individual,3600,21500,2022-03-20,Active
+EMP035,Steven Collins,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,200000,Individual,4100,25000,2018-06-01,Active
+EMP036,Ashley Stewart,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,Yes,200000,Family,4200,25500,2020-02-15,Active
+EMP037,Paul Sanchez,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,200000,Individual,4000,24500,2021-08-01,Active
+EMP038,Kathleen Morris,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,No,150000,Individual,3600,21500,2020-07-15,Active
+EMP039,George Rogers,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2021-04-01,Active
+EMP040,Samantha Powell,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,Yes,150000,Individual,3600,21500,2022-02-20,Active
+EMP041,Edward Long,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,250000,Family,5000,30500,2017-11-10,Active
+EMP042,Carol Patterson,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,No,150000,Individual,3500,21000,2019-05-01,Active
+EMP043,Mark Hughes,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2020-09-15,Active
+EMP044,Diane Flores,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,Yes,250000,Family,5100,31000,2018-04-10,Active
+EMP045,Brian Washington,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2020-01-15,Active
+EMP046,Margarett Butler,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,No,150000,Individual,3600,21500,2020-06-20,Active
+EMP047,Ronald Simmons,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,150000,Individual,3400,20500,2021-02-10,Active
+EMP048,Brenda Jackson,United Blue PPO,PPO,MetLife Dental,EyeMed Vision,No,Yes,150000,Individual,3500,21000,2021-07-01,Active
+EMP049,Jeffrey White,Aetna PPO,PPO,Delta Dental Premier,VSP Vision Plus,Yes,No,150000,Individual,3600,21500,2022-03-15,Active
+EMP050,Sharon Harris,UnitedHealth HMO,HMO,Guardian Dental,EyeMed Vision,No,No,150000,Individual,3400,20500,2019-09-01,Active
+EMP051,Gary Martin,United Blue PPO,PPO,MetLife Dental,VSP Vision Plus,Yes,No,150000,Individual,3500,21000,2020-04-15,Active
+EMP052,Shirley Thompson,Aetna PPO,PPO,Delta Dental Premier,EyeMed Vision,No,Yes,250000,Family,5200,31500,2017-02-20,Active
+EMP053,Dennis Martinez,UnitedHealth HMO,HMO,Guardian Dental,VSP Vision Plus,Yes,No,400000,Family,7100,47000,2019-01-15,Active

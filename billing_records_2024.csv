@@ -1,0 +1,31 @@
+Bill_ID,Client_ID,Client_Name,Billing_Date,Service_Type,Amount,Status,Processing_Days,Claims_Count,Denial_Rate
+BILL001,HOSP001,Atlanta General Hospital,2024-01-05,Hospital Billing,145000.50,Completed,4,2850,2.3
+BILL002,HOSP002,Memorial Medical Center,2024-01-05,Hospital Billing,98500.75,Completed,3,1950,1.8
+BILL003,LAB001,Quest Diagnostics - Atlanta,2024-01-08,Lab Billing,45250.25,Completed,5,890,0.5
+BILL004,HOSP003,Texas Heart Institute,2024-01-10,Hospital Billing,185000.00,Completed,4,3100,2.1
+BILL005,LAB002,LabCorp Analytics,2024-01-12,Lab Billing,52100.50,Completed,4,1200,0.8
+BILL006,HOSP004,Duke University Hospital,2024-01-15,Hospital Billing,125000.75,Completed,5,2450,2.5
+BILL007,HOSP005,Cleveland Clinic,2024-01-18,Hospital Billing,215000.00,Completed,3,4100,1.9
+BILL008,LAB003,Sonora Quest Labs,2024-01-20,Lab Billing,38500.25,Completed,6,750,0.6
+BILL009,HOSP006,Johns Hopkins Hospital,2024-01-22,Hospital Billing,175000.50,Completed,4,3500,2.2
+BILL010,LAB004,American Medical Laboratories,2024-01-25,Lab Billing,48900.75,Completed,5,980,0.9
+BILL011,HOSP007,Massachusetts General Hospital,2024-02-01,Hospital Billing,195000.00,Completed,4,3800,2.0
+BILL012,HOSP008,Children's Hospital Boston,2024-02-05,Hospital Billing,85500.50,Completed,5,1650,1.7
+BILL013,LAB005,BioReference Labs,2024-02-08,Lab Billing,61200.00,Completed,4,1450,0.7
+BILL014,HOSP009,Stanford Health,2024-02-10,Hospital Billing,165000.75,Completed,3,2900,2.4
+BILL015,LAB006,Laboratory Corporation,2024-02-15,Lab Billing,55800.25,Completed,5,1100,0.8
+BILL016,HOSP010,UCLA Medical Center,2024-02-18,Hospital Billing,155000.00,Completed,4,2850,2.1
+BILL017,HOSP011,Mayo Clinic,2024-02-20,Hospital Billing,205000.50,Completed,4,4050,1.8
+BILL018,LAB007,Arup Laboratories,2024-02-25,Lab Billing,42300.75,Completed,6,820,0.5
+BILL019,HOSP012,Cedars-Sinai Medical Center,2024-03-01,Hospital Billing,135000.00,Completed,5,2400,2.3
+BILL020,LAB008,Mayo Clinic Laboratories,2024-03-05,Lab Billing,58900.50,Completed,4,1300,0.9
+BILL021,HOSP013,Massachusetts General Hospital,2024-03-08,Hospital Billing,180000.75,Completed,3,3200,2.0
+BILL022,HOSP014,NewYork Presbyterian,2024-03-12,Hospital Billing,225000.00,Completed,4,4300,1.9
+BILL023,LAB009,Spectrum Healthcare Labs,2024-03-15,Lab Billing,46500.25,Completed,5,920,0.6
+BILL024,HOSP015,Brigham & Women's Hospital,2024-03-18,Hospital Billing,145000.50,Completed,5,2700,2.2
+BILL025,LAB010,Northwestern Pathology Labs,2024-03-20,Lab Billing,52100.75,Completed,4,1050,0.8
+BILL026,HOSP001,Atlanta General Hospital,2024-03-25,Hospital Billing,152000.00,Completed,4,2900,2.4
+BILL027,HOSP016,Pennsylvania Hospital,2024-03-28,Hospital Billing,168000.50,Completed,3,3100,2.1
+BILL028,LAB011,Columbia University Labs,2024-04-01,Lab Billing,59200.25,Completed,5,1200,0.7
+BILL029,HOSP017,Jackson Memorial Hospital,2024-04-05,Hospital Billing,115000.75,Completed,6,2150,1.8
+BILL030,HOSP018,Shriners Hospitals,2024-04-10,Hospital Billing,95500.00,Completed,4,1850,2.3

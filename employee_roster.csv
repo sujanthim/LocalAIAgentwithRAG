@@ -1,0 +1,54 @@
+Employee_ID,First_Name,Last_Name,Position,Department,Location,Hire_Date,Salary,Status,Manager_ID,Years_Experience
+EMP001,James,Richardson,Chief Executive Officer,Executive,Atlanta,2015-06-01,425000,Active,NULL,28
+EMP002,Sarah,Mitchell,Chief Financial Officer,Finance,Atlanta,2016-03-15,320000,Active,EMP001,22
+EMP003,Michael,Thompson,Chief Operations Officer,Operations,Atlanta,2017-01-10,310000,Active,EMP001,25
+EMP004,Jennifer,Chen,Chief Compliance Officer,Compliance,Atlanta,2018-05-20,285000,Active,EMP001,20
+EMP005,David,Martinez,Human Resources Director,Human Resources,Atlanta,2016-08-12,195000,Active,EMP001,18
+EMP006,Patricia,Anderson,Controller,Finance,Atlanta,2016-08-12,145000,Active,EMP002,23
+EMP007,Robert,Johnson,Director of Billing Operations,Operations,Atlanta,2017-05-01,165000,Active,EMP003,24
+EMP008,Linda,Davis,Quality Assurance Manager,Quality Assurance,Atlanta,2018-02-15,125000,Active,EMP003,15
+EMP009,Christopher,Wilson,IT Manager,Technology,Atlanta,2017-11-01,135000,Active,EMP003,19
+EMP010,Maria,Garcia,Compliance Manager,Compliance,Atlanta,2019-01-10,115000,Active,EMP004,17
+EMP011,Thomas,Rodriguez,Hospital Billing Manager,Operations,Dallas,2018-03-20,125000,Active,EMP007,14
+EMP012,Jessica,Lewis,Laboratory Billing Manager,Operations,Charlotte,2018-07-15,120000,Active,EMP007,12
+EMP013,Daniel,Lee,Payroll Manager,Finance,Atlanta,2017-09-05,85000,Active,EMP006,11
+EMP014,Amanda,Walker,Finance Analyst,Finance,Atlanta,2020-02-10,65000,Active,EMP006,4
+EMP015,Kevin,Hall,Finance Analyst,Finance,Atlanta,2021-06-15,62000,Active,EMP006,3
+EMP016,Rachel,Allen,General Ledger Supervisor,Finance,Atlanta,2019-04-20,78000,Active,EMP006,8
+EMP017,Timothy,Young,Billing Specialist - Hospital,Operations,Dallas,2019-08-01,58000,Active,EMP011,5
+EMP018,Emily,King,Billing Specialist - Hospital,Operations,Dallas,2020-01-15,57000,Active,EMP011,4
+EMP019,Matthew,Wright,Billing Specialist - Hospital,Operations,Dallas,2020-06-20,56000,Active,EMP011,4
+EMP020,Sarah,Lopez,Billing Specialist - Hospital,Operations,Dallas,2021-03-10,55000,Active,EMP011,3
+EMP021,Andrew,Hill,Billing Specialist - Hospital,Operations,Dallas,2021-07-25,54000,Active,EMP011,3
+EMP022,Lisa,Scott,Billing Specialist - Hospital,Operations,Dallas,2022-01-15,53000,Active,EMP011,2
+EMP023,James,Green,Billing Specialist - Hospital,Operations,Dallas,2022-05-01,52000,Active,EMP011,2
+EMP024,Karen,Adams,Billing Specialist - Hospital,Operations,Dallas,2022-09-20,51000,Active,EMP011,1
+EMP025,William,Nelson,Billing Specialist - Lab,Operations,Charlotte,2020-04-15,56000,Active,EMP012,4
+EMP026,Nancy,Carter,Billing Specialist - Lab,Operations,Charlotte,2020-08-20,55000,Active,EMP012,4
+EMP027,Charles,Mitchell,Billing Specialist - Lab,Operations,Charlotte,2021-02-10,54000,Active,EMP012,3
+EMP028,Susan,Perez,Billing Specialist - Lab,Operations,Charlotte,2021-06-25,53000,Active,EMP012,3
+EMP029,Joseph,Roberts,Billing Specialist - Lab,Operations,Charlotte,2022-01-15,52000,Active,EMP012,2
+EMP030,Barbara,Phillips,Billing Specialist - Lab,Operations,Charlotte,2022-05-01,51000,Active,EMP012,2
+EMP031,Richard,Campbell,QA Analyst,Quality Assurance,Atlanta,2019-10-01,62000,Active,EMP008,4
+EMP032,Michelle,Parker,QA Analyst,Quality Assurance,Atlanta,2020-05-15,61000,Active,EMP008,4
+EMP033,Donald,Evans,QA Analyst,Quality Assurance,Atlanta,2021-01-10,59000,Active,EMP008,3
+EMP034,Dorothy,Edwards,QA Analyst,Quality Assurance,Atlanta,2022-03-20,58000,Active,EMP008,2
+EMP035,Steven,Collins,Systems Administrator,Technology,Atlanta,2018-06-01,72000,Active,EMP009,10
+EMP036,Ashley,Stewart,Systems Administrator,Technology,Atlanta,2020-02-15,68000,Active,EMP009,4
+EMP037,Paul,Sanchez,Systems Administrator,Technology,Atlanta,2021-08-01,66000,Active,EMP009,3
+EMP038,Kathleen,Morris,Compliance Analyst,Compliance,Atlanta,2020-07-15,61000,Active,EMP010,4
+EMP039,George,Rogers,Compliance Analyst,Compliance,Atlanta,2021-04-01,59000,Active,EMP010,3
+EMP040,Samantha,Powell,Compliance Analyst,Compliance,Atlanta,2022-02-20,57000,Active,EMP010,2
+EMP041,Edward,Long,HR Manager,Human Resources,Atlanta,2017-11-10,88000,Active,EMP005,12
+EMP042,Carol,Patterson,Recruitment Specialist,Human Resources,Atlanta,2019-05-01,62000,Active,EMP005,6
+EMP043,Mark,Hughes,Benefits Administrator,Human Resources,Atlanta,2020-09-15,58000,Active,EMP005,4
+EMP044,Diane,Flores,Accounts Receivable Manager,Operations,Miami,2018-04-10,118000,Active,EMP007,13
+EMP045,Brian,Washington,Collections Specialist,Operations,Miami,2020-01-15,52000,Active,EMP044,4
+EMP046,Margarett,Butler,Collections Specialist,Operations,Miami,2020-06-20,51000,Active,EMP044,4
+EMP047,Ronald,Simmons,Collections Specialist,Operations,Miami,2021-02-10,50000,Active,EMP044,3
+EMP048,Brenda,Jackson,Collections Specialist,Operations,Miami,2021-07-01,49000,Active,EMP044,3
+EMP049,Jeffrey,White,Collections Specialist,Operations,Miami,2022-03-15,48000,Active,EMP044,2
+EMP050,Sharon,Harris,Denial Management Specialist,Operations,Dallas,2019-09-01,61000,Active,EMP011,5
+EMP051,Gary,Martin,Denial Management Specialist,Operations,Dallas,2020-04-15,60000,Active,EMP011,4
+EMP052,Shirley,Thompson,Senior Billing Analyst,Operations,Atlanta,2017-02-20,92000,Active,EMP007,14
+EMP053,Dennis,Martinez,Legal Advisor,Compliance,Atlanta,2019-01-15,135000,Active,EMP004,16

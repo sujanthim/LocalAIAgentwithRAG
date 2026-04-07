@@ -1,0 +1,43 @@
+Client_ID,Client_Name,Entity_Type,Location,Founded,Annual_Billing_Volume,Payment_Terms,Contract_Start,Contract_End,Account_Manager,Status,Service_Type
+HOSP001,Atlanta General Hospital,Hospital Network,Atlanta GA,1952,1950000,Net 30,2016-06-01,2027-05-31,EMP011,Active,Hospital Billing
+HOSP002,Memorial Medical Center,Hospital Network,Phoenix AZ,1978,1200000,Net 30,2017-03-15,2026-02-28,EMP011,Active,Hospital Billing
+LAB001,Quest Diagnostics - Atlanta,Laboratory,Atlanta GA,1998,650000,Net 15,2018-01-10,2025-12-31,EMP012,Active,Lab Billing
+HOSP003,Texas Heart Institute,Hospital,Houston TX,1962,2100000,Net 30,2015-08-20,2027-07-31,EMP011,Active,Hospital Billing
+LAB002,LabCorp Analytics,Laboratory,Research Triangle NC,2001,720000,Net 15,2016-11-01,2025-10-31,EMP012,Active,Lab Billing
+HOSP004,Duke University Hospital,Hospital Network,Durham NC,1930,1450000,Net 30,2017-05-15,2026-04-30,EMP011,Active,Hospital Billing
+HOSP005,Cleveland Clinic,Hospital Network,Cleveland OH,1921,2450000,Net 30,2014-02-01,2027-01-31,EMP011,Active,Hospital Billing
+LAB003,Sonora Quest Labs,Laboratory,Phoenix AZ,1989,560000,Net 15,2019-03-20,2024-12-31,EMP012,Active,Lab Billing
+HOSP006,Johns Hopkins Hospital,Hospital Network,Baltimore MD,1889,2000000,Net 30,2016-09-01,2026-08-31,EMP011,Active,Hospital Billing
+LAB004,American Medical Laboratories,Laboratory,Atlanta GA,1983,700000,Net 15,2017-07-10,2025-06-30,EMP012,Active,Lab Billing
+HOSP007,Massachusetts General Hospital,Hospital Network,Boston MA,1811,2200000,Net 30,2015-11-15,2027-10-31,EMP011,Active,Hospital Billing
+HOSP008,Children's Hospital Boston,Hospital,Boston MA,1869,980000,Net 30,2018-04-01,2026-03-31,EMP011,Active,Hospital Billing
+LAB005,BioReference Labs,Laboratory,Elmwood Park NJ,1986,850000,Net 15,2016-12-10,2025-11-30,EMP012,Active,Lab Billing
+HOSP009,Stanford Health,Hospital Network,Stanford CA,1959,1880000,Net 30,2017-08-20,2026-07-31,EMP011,Active,Hospital Billing
+LAB006,Laboratory Corporation,Laboratory,Research Triangle NC,1969,920000,Net 15,2015-05-01,2027-04-30,EMP012,Active,Lab Billing
+HOSP010,UCLA Medical Center,Hospital Network,Los Angeles CA,1945,1680000,Net 30,2018-01-15,2026-12-31,EMP011,Active,Hospital Billing
+HOSP011,Mayo Clinic,Hospital Network,Rochester MN,1889,2650000,Net 30,2014-06-01,2027-05-31,EMP011,Active,Hospital Billing
+LAB007,Arup Laboratories,Laboratory,Salt Lake City UT,1984,600000,Net 15,2019-02-01,2025-01-31,EMP012,Active,Lab Billing
+HOSP012,Cedars-Sinai Medical Center,Hospital Network,Los Angeles CA,1902,1540000,Net 30,2017-10-10,2026-09-30,EMP011,Active,Hospital Billing
+LAB008,Mayo Clinic Laboratories,Laboratory,Rochester MN,1976,840000,Net 15,2016-03-20,2025-02-28,EMP012,Active,Lab Billing
+HOSP013,Massachusetts General Hospital,Hospital Network,Boston MA,1811,2150000,Net 30,2018-02-01,2027-01-31,EMP011,Active,Hospital Billing
+HOSP014,NewYork Presbyterian,Hospital Network,New York NY,1771,2500000,Net 30,2015-09-15,2027-08-31,EMP011,Active,Hospital Billing
+LAB009,Spectrum Healthcare Labs,Laboratory,Seattle WA,1995,680000,Net 15,2017-04-10,2025-03-31,EMP012,Active,Lab Billing
+HOSP015,Brigham & Women's Hospital,Hospital Network,Boston MA,1832,1760000,Net 30,2016-07-20,2026-06-30,EMP011,Active,Hospital Billing
+LAB010,Northwestern Pathology Labs,Laboratory,Chicago IL,1988,750000,Net 15,2018-06-01,2026-05-31,EMP012,Active,Lab Billing
+HOSP016,Pennsylvania Hospital,Hospital Network,Philadelphia PA,1751,1420000,Net 30,2017-12-10,2026-11-30,EMP011,Active,Hospital Billing
+HOSP017,Jackson Memorial Hospital,Hospital Network,Miami FL,1927,1280000,Net 30,2019-01-15,2027-12-31,EMP044,Active,Hospital Billing
+LAB011,Columbia University Labs,Laboratory,New York NY,1999,880000,Net 15,2016-09-05,2025-08-31,EMP012,Active,Lab Billing
+HOSP018,Shriners Hospitals,Hospital Network,Multiple,1922,1180000,Net 30,2018-03-20,2026-02-28,EMP044,Active,Hospital Billing
+LAB012,Emory University Labs,Laboratory,Atlanta GA,1989,620000,Net 15,2017-11-20,2025-10-31,EMP012,Active,Lab Billing
+HOSP019,University of Michigan Health,Hospital Network,Ann Arbor MI,1869,1550000,Net 30,2016-04-01,2026-03-31,EMP011,Active,Hospital Billing
+LAB013,Pathology Partners,Laboratory,Dallas TX,2003,710000,Net 15,2019-05-10,2025-04-30,EMP012,Active,Lab Billing
+HOSP020,University of Washington Medical,Hospital Network,Seattle WA,1959,1720000,Net 30,2017-06-15,2026-05-31,EMP011,Active,Hospital Billing
+LAB014,HealthCare Diagnostics,Laboratory,Boston MA,1992,580000,Net 15,2018-08-01,2026-07-31,EMP012,Active,Lab Billing
+HOSP021,UCSF Medical Center,Hospital Network,San Francisco CA,1864,1890000,Net 30,2015-12-10,2027-11-30,EMP011,Active,Hospital Billing
+LAB015,Virginia Pathology Group,Laboratory,Richmond VA,1991,650000,Net 15,2016-10-20,2025-09-30,EMP012,Active,Lab Billing
+HOSP022,Yale New Haven Hospital,Hospital Network,New Haven CT,1979,1350000,Net 30,2018-09-01,2027-08-31,EMP011,Active,Hospital Billing
+LAB016,Texas Medical Labs,Laboratory,Houston TX,2000,740000,Net 15,2017-02-15,2025-01-31,EMP012,Active,Lab Billing
+HOSP023,Indiana University Health,Hospital Network,Indianapolis IN,1821,1420000,Net 30,2017-03-10,2026-02-28,EMP011,Active,Hospital Billing
+LAB017,Midwest Laboratory Services,Laboratory,Chicago IL,1985,610000,Net 15,2019-07-20,2025-06-30,EMP012,Active,Lab Billing
+HOSP024,Vanderbilt University Medical,Hospital Network,Nashville TN,1935,1280000,Net 30,2016-08-05,2026-07-31,EMP011,Active,Hospital Billing
+LAB018,Carolina Pathology Associates,Laboratory,Charlotte NC,1994,590000,Net 15,2018-04-10,2026-03-31,EMP012,Active,Lab Billing

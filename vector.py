@@ -1,24 +1,22 @@
 import os
 import json
 
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
 from langchain_community.retrievers import BM25Retriever
-from langchain.retrievers import EnsembleRetriever
 from document_loader import DocumentLoader
 from role_config import ROLE_DOCUMENT_MAP
 
 # ------------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------------
-EMBEDDING_MODEL = "llama2"
 DB_LOCATION = "./chroma_langchain_db"
 DOCUMENTS_DIRECTORY = "./documents/"
 FILE_TYPES = [".pdf", ".docx", ".txt", ".csv", ".md", ".xlsx", ".xls", ".json"]
 
-embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 _ROLES = list(ROLE_DOCUMENT_MAP.keys())  # derived from role_config — no hardcoding
 _collections: dict[str, Chroma] = {}
@@ -99,10 +97,30 @@ def get_retriever_for_role(role: str, k: int = 10):
         return vector_retriever
 
     bm25_retriever = BM25Retriever.from_documents(bm25_docs, k=k)
-    return EnsembleRetriever(
+    return _EnsembleRetriever(
         retrievers=[bm25_retriever, vector_retriever],
         weights=[0.5, 0.5],
+        k=k,
     )
+
+
+class _EnsembleRetriever(BaseRetriever):
+    """Merges two retrievers using Reciprocal Rank Fusion (replaces langchain EnsembleRetriever)."""
+
+    retrievers: list
+    weights: list
+    k: int = 10
+
+    def _get_relevant_documents(self, query: str, *, run_manager=None) -> list[Document]:
+        rrf_k = 60
+        scores: dict[str, float] = {}
+        docs_by_key: dict[str, Document] = {}
+        for retriever, weight in zip(self.retrievers, self.weights):
+            for rank, doc in enumerate(retriever.invoke(query)):
+                key = doc.page_content
+                scores[key] = scores.get(key, 0.0) + weight / (rrf_k + rank + 1)
+                docs_by_key.setdefault(key, doc)
+        return [docs_by_key[k] for k in sorted(scores, key=lambda x: scores[x], reverse=True)][: self.k]
 
 
 class _AdminMergedRetriever(BaseRetriever):

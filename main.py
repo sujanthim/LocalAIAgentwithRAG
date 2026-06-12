@@ -8,12 +8,21 @@ from langchain_core.runnables import RunnablePassthrough
 from auth import verify_token
 from audit import log_login, log_query
 from vector import initialize_vector_store, get_retriever_for_role
-from guardrails import check_input, check_output, is_irrelevant_response, _REDIRECT_MESSAGE
+from guardrails import (
+    check_input,
+    redact_pii,
+    requires_human_approval,
+    request_human_approval,
+    check_output,
+    check_output_safety,
+    is_irrelevant_response,
+    _REDIRECT_MESSAGE,
+)
 
 # ------------------------------------------------------------------
 # LLM configuration
 # ------------------------------------------------------------------
-MODEL = "mistral"
+MODEL = "llama3.2"
 
 # ------------------------------------------------------------------
 # Prompt
@@ -97,11 +106,22 @@ def main():
             print("Goodbye!")
             break
 
-        # Input guardrail
+        # Layer 1: Deterministic input filter
         valid, rejection = check_input(question)
         if not valid:
             print(f"\nAssistant: {rejection}\n")
             continue
+
+        # Layer 2 (input): Redact PII from the user's question
+        question, pii_in = redact_pii(question, output=False)
+        if pii_in:
+            print(f"[GUARDRAIL] PII removed from input: {', '.join(pii_in)}")
+
+        # Layer 3: Human-in-the-loop for sensitive queries
+        if requires_human_approval(question):
+            if not request_human_approval(question):
+                print("\nAssistant: Query cancelled.\n")
+                continue
 
         # Retrieve docs and audit
         retrieved_docs = retriever.invoke(question)
@@ -113,9 +133,21 @@ def main():
             print(f"\nAssistant: {_REDIRECT_MESSAGE}\n")
             continue
 
-        warnings = check_output(answer)
-        for w in warnings:
+        # Layer 2 (output): Redact PII from the LLM response
+        answer, pii_out = redact_pii(answer, output=True)
+        if pii_out:
+            print(f"[GUARDRAIL] PII removed from response: {', '.join(pii_out)}")
+
+        # Structural checks (URL detection, Sources section)
+        for w in check_output(answer):
             print(w)
+
+        # Layer 4: Model-based safety check
+        is_safe, safety_msg = check_output_safety(answer)
+        if not is_safe:
+            print(f"[GUARDRAIL] {safety_msg}")
+            print(f"\nAssistant: {_REDIRECT_MESSAGE}\n")
+            continue
 
         print(f"\nAssistant: {answer}\n")
 

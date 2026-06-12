@@ -1,20 +1,20 @@
 # LocalAIAgentWithRAG
 
-A local AI agent with Retrieval-Augmented Generation (RAG) built on LangChain, Ollama, and ChromaDB. The system ingests company documents and lets authenticated users ask questions, generate summaries, and produce content — all grounded in documents they are authorised to access. No internet connection or API keys required.
+A local AI agent with Retrieval-Augmented Generation (RAG) built on LangChain, Ollama, and ChromaDB. The system ingests company documents and lets authenticated users ask questions, generate summaries, and produce content — all grounded in documents they are authorised to access.
 
 ---
 
 ## Features
 
-- **Fully local** — all inference runs via Ollama; no data leaves your machine
 - **Role-based access control** — each user role has its own ChromaDB collection; a billing user never touches HR data at the database level
 - **JWT authentication** — roles are cryptographically verified, never trusted from user input
 - **Multi-format ingestion** — PDF, DOCX, TXT, Markdown, CSV, Excel, JSON
-- **Smart ingestion strategy** — prose documents are chunked; CSV/Excel/JSON are ingested row-by-row so individual records remain searchable
+- **Hybrid retrieval** — BM25 (exact keyword match) + vector search (semantic), merged with Reciprocal Rank Fusion
+- **4-layer guardrails** — deterministic input filter, PII redaction, human-in-the-loop approval, model-based safety check
 - **Source citation** — every answer includes the filenames it was sourced from
-- **Input/output guardrails** — prompt injection detection, off-topic blocking, empty response detection
 - **Audit logging** — every login and query is logged with user, role, and retrieved sources
-- **Reload without restart** — type `reload` in the chat to re-index documents on the fly
+- **REST API** — FastAPI server with JWT-protected `/chat` and admin-only `/reload` endpoints
+- **Reload without restart** — type `reload` in the CLI chat to re-index documents on the fly
 
 ---
 
@@ -27,17 +27,27 @@ User query
 JWT verification (auth.py)
     │
     ▼
-Input guardrails (guardrails.py)
+Layer 1 — Deterministic input filter      ← blocks injection & off-topic queries
     │
     ▼
-Role-scoped ChromaDB retriever (vector.py)
+Layer 2 — PII redaction (input)           ← strips emails, phone numbers
+    │
+    ▼
+Layer 3 — Human-in-the-loop approval      ← prompts confirmation for sensitive queries
+    │
+    ▼
+Role-scoped hybrid retriever (vector.py)
+    │   BM25 + ChromaDB vector search, merged with RRF
     │   Per-role collections: role_hr / role_billing / role_public
     │   Admin: merges all collections
     ▼
 LangChain chain: retriever → prompt → Ollama LLM → output parser (main.py)
     │
     ▼
-Output guardrails (guardrails.py)
+Layer 2 — PII redaction (output)          ← strips SSNs, card numbers from response
+    │
+    ▼
+Layer 4 — Model-based safety check        ← LLM evaluates response for safety (SAFE/UNSAFE)
     │
     ▼
 Audit log (audit.py)          Answer displayed to user
@@ -47,12 +57,14 @@ Audit log (audit.py)          Answer displayed to user
 
 ## Tech Stack
 
-| Component | Library |
-|-----------|---------|
-| LLM | Ollama (`llama2`) via `langchain-ollama` |
-| Embeddings | `OllamaEmbeddings` |
+| Component | Library / Model |
+|-----------|----------------|
+| LLM | Ollama (`llama3.2`) via `langchain-ollama` |
+| Embeddings | `all-MiniLM-L6-v2` via `langchain-huggingface` (runs locally, no Ollama required) |
 | Vector store | ChromaDB via `langchain-chroma` |
-| Auth | `PyJWT` |
+| Keyword search | BM25 via `langchain-community` |
+| REST API | FastAPI + Uvicorn |
+| Auth | PyJWT (HS256) |
 | Document loading | `pypdf`, `python-docx`, `pandas`, `openpyxl` |
 | Orchestration | LangChain LCEL |
 
@@ -63,13 +75,14 @@ Audit log (audit.py)          Answer displayed to user
 ```
 LocalAIAgentWithRAG/
 │
-├── main.py                  # Entry point — auth, chat loop, chain
-├── vector.py                # ChromaDB collections, retriever per role
+├── main.py                  # CLI entry point — auth, chat loop, chain
+├── api.py                   # FastAPI server — /health, /chat, /reload
+├── vector.py                # ChromaDB collections, hybrid retriever per role
 ├── document_loader.py       # Multi-format document ingestion
 ├── role_config.py           # Role → document access map
 ├── auth.py                  # JWT verification
 ├── audit.py                 # Structured audit log
-├── guardrails.py            # Input/output guardrails
+├── guardrails.py            # 4-layer guardrail system
 ├── generate_token.py        # Dev token generator (simulates IdP)
 ├── requirements.txt
 │
@@ -91,34 +104,88 @@ LocalAIAgentWithRAG/
 ### Prerequisites
 
 - [Ollama](https://ollama.ai) installed and running
-- Python 3.10+
+- Python 3.9+
 
 ### Installation
 
 ```bash
-# 1. Pull the LLM
-ollama pull llama2
+# 1. Pull the models
+ollama pull llama3.2
+ollama pull mistral
 
-# 2. Clone the repo and install dependencies
+# 2. Start Ollama
+ollama serve
+
+# 3. Clone the repo and create a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 4. Install dependencies
 pip install -r requirements.txt
-
-# 3. Generate a secret key (keep this safe — never commit it)
-export JWT_SECRET_KEY=$(python -c "import secrets; print(secrets.token_hex(32))")
-
-# 4. Generate a token for your role
-python generate_token.py --role hr --user alice --email alice@company.com
-
-# 5. Export the token and run
-export AUTH_TOKEN='<paste token here>'
-python main.py
 ```
 
-> **Windows (PowerShell)**
-> ```powershell
-> $env:JWT_SECRET_KEY = python -c "import secrets; print(secrets.token_hex(32))"
-> $env:AUTH_TOKEN = "<paste token here>"
-> python main.py
-> ```
+### Environment variables (persistent)
+
+Add these to `~/.zshrc` so they survive across terminal sessions:
+
+```bash
+export JWT_SECRET_KEY="your-secret-key-here"   # generate once, keep fixed
+export HF_TOKEN="hf_..."                        # optional — silences HuggingFace rate-limit warnings
+```
+
+Generate a secret key once and paste the output into `~/.zshrc`:
+```bash
+python3 -c "import secrets; print(secrets.token_hex(32))"
+```
+
+Apply to the current terminal:
+```bash
+source ~/.zshrc
+```
+
+> **Important:** `JWT_SECRET_KEY` must stay fixed. Changing it invalidates all existing tokens and requires regenerating them.
+
+### Running the CLI
+
+```bash
+# Generate a token for your role
+python3 generate_token.py --role hr --user alice --email alice@company.com
+
+# Export the token and run
+export AUTH_TOKEN='<paste token here>'
+python3 main.py
+```
+
+### Running the API server
+
+The server terminal must have `JWT_SECRET_KEY` set before starting:
+
+```bash
+source ~/.zshrc
+uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Interactive API docs: `http://localhost:8000/docs`
+
+---
+
+## API Endpoints
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| `GET` | `/health` | None | Liveness check |
+| `POST` | `/chat` | Any role JWT | Ask a question |
+| `POST` | `/reload` | Admin JWT only | Re-index all documents |
+
+**Example:**
+```bash
+curl -X POST http://localhost:8000/chat \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What is the parental leave policy?"}'
+```
+
+To test from a browser, use the Swagger UI at `http://localhost:8000/docs` — click **Authorize**, paste your token (no `Bearer` prefix), then use **Try it out** on any endpoint.
 
 ---
 
@@ -139,22 +206,35 @@ To add a new role, update `ROLE_DOCUMENT_MAP` in `role_config.py` — a new Chro
 
 1. Place files in `./documents/`
 2. Supported formats: `.pdf`, `.docx`, `.txt`, `.md`, `.csv`, `.xlsx`, `.xls`, `.json`
-3. Type `reload` in the chat to re-index without restarting
+3. Type `reload` in the CLI chat, or call `POST /reload` (admin only) via the API
 
-To restrict a new document to a specific role, add it to the relevant role's list in `role_config.py`.
+To restrict a document to a specific role, add its filename to the relevant role's list in `role_config.py`.
 
 ---
 
-## Chat Commands
+## Guardrails
+
+Queries pass through four layers before and after the LLM:
+
+| Layer | Stage | What it does |
+|-------|-------|-------------|
+| **1 — Deterministic input filter** | Before LLM | Blocks prompt injection attempts and off-topic questions via regex |
+| **2 — PII redaction (input)** | Before LLM | Strips emails and phone numbers from user queries |
+| **3 — Human-in-the-loop** | Before LLM | Prompts for confirmation on queries involving salary, SSN, payroll, or termination |
+| **2 — PII redaction (output)** | After LLM | Strips SSNs, card numbers, and bank account numbers from responses |
+| **4 — Model-based safety** | After LLM | Sends the response to `llama3.2` for a `SAFE`/`UNSAFE` verdict; blocks unsafe responses |
+
+---
+
+## CLI Commands
 
 | Input | Action |
 |-------|--------|
-| Any question or task | Answered using role-scoped documents |
+| Any question | Answered using role-scoped documents |
 | `reload` | Re-ingests all documents from disk |
 | `q` / `quit` / `exit` | Quit |
 
-### Example queries
-
+**Example queries:**
 ```
 What is the parental leave policy?
 Summarise the compliance training requirements.
@@ -164,37 +244,21 @@ What is the billing status for client HOSP005?
 
 ---
 
-## Guardrails
-
-**Input:**
-- Prompt injection attempts (e.g. "ignore previous instructions") are blocked before reaching the LLM
-- Clearly off-topic questions are rejected with a redirect message
-
-**Output:**
-- Responses with no answer content (sources only) are caught and replaced with a redirect
-- Generated URLs are flagged as a warning
-- Missing source citations are flagged
-
----
-
 ## Security Notes
 
-- `JWT_SECRET_KEY` must be set as an environment variable — never hardcode or commit it
-- `generate_token.py` is a dev-only tool that simulates an IdP. In production, tokens should be issued by Auth0, Okta, or Azure AD
+- `JWT_SECRET_KEY` must be a fixed value in your environment — never hardcode or commit it
+- `generate_token.py` is a dev-only tool. In production, tokens should come from an IdP (Auth0, Okta, Azure AD)
 - `audit.log` contains query history — restrict filesystem permissions in production
-- `chroma_langchain_db/` is gitignored — delete it to force a full re-index
+- `chroma_langchain_db/` is gitignored — delete it to force a full re-index (required when changing documents or embedding model)
 
 ---
 
 ## Resetting the Vector Database
 
 ```bash
-# Delete and re-index from scratch
-Remove-Item -Recurse -Force ./chroma_langchain_db   # PowerShell
-rm -rf ./chroma_langchain_db                         # bash/zsh
+rm -rf ./chroma_langchain_db
+python3 main.py   # re-ingestion starts automatically
 ```
-
-Then run `python main.py` — ingestion starts automatically.
 
 ---
 

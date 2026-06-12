@@ -24,7 +24,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel
 
 from audit import log_login, log_query
-from auth import VALID_ROLES, SECRET_KEY
+from auth import VALID_ROLES
 from guardrails import (
     _REDIRECT_MESSAGE,
     check_input,
@@ -71,10 +71,11 @@ security = HTTPBearer()
 
 def _verify(token: str) -> dict:
     """Replicate auth.verify_token but raise ValueError instead of sys.exit."""
-    if not SECRET_KEY:
+    secret = os.environ.get("JWT_SECRET_KEY", "")
+    if not secret:
         raise ValueError("JWT_SECRET_KEY environment variable is not set.")
     try:
-        payload = pyjwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        payload = pyjwt.decode(token, secret, algorithms=["HS256"])
     except pyjwt.ExpiredSignatureError:
         raise ValueError("Token has expired.")
     except pyjwt.InvalidTokenError as e:

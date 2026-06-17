@@ -18,5 +18,8 @@ perf_test_db/
 # Environment secrets
 .env
 
+# User credentials database
+users.db
+
 # Claude Code local settings
 .claude/

@@ -12,7 +12,11 @@ and changing algorithms=["HS256"] to algorithms=["RS256"].
 
 import os
 import sys
+
 import jwt  # PyJWT
+from dotenv import load_dotenv
+
+load_dotenv()  # loads JWT_SECRET_KEY from .env if present
 
 VALID_ROLES = {"admin", "hr", "billing", "public"}
 
@@ -25,9 +29,9 @@ SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "")
 def _require_secret_key() -> None:
     if not SECRET_KEY:
         sys.exit(
-            "ERROR: JWT_SECRET_KEY environment variable is not set.\n"
-            "Run: export JWT_SECRET_KEY=your-secret-key\n"
-            "Or generate tokens with: python generate_token.py"
+            "ERROR: JWT_SECRET_KEY is not set.\n"
+            "Add it to your .env file: JWT_SECRET_KEY=your-secret-key\n"
+            "Generate a key with: python3 -c \"import secrets; print(secrets.token_hex(32))\""
         )
 
 

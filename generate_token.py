@@ -13,6 +13,9 @@ Usage:
 
 import argparse
 import os
+
+from dotenv import load_dotenv
+load_dotenv()
 import sys
 from datetime import datetime, timedelta, timezone
 
